@@ -13,6 +13,7 @@ class MyAdapter(options: FirestoreRecyclerOptions<Note>) :FirestoreRecyclerAdapt
 ){
     class RVViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val noteText : TextView = itemView.findViewById(R.id.notecontent)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RVViewHolder {

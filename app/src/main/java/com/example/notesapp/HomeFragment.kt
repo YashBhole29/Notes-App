@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.databinding.FragmentHomeBinding
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -22,39 +23,39 @@ class HomeFragment : Fragment() {
     private val auth = FirebaseAuth.getInstance()
     private lateinit var adapter: MyAdapter
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        //recyclerview=binding.recyclerviewid
+
         notesDao = NotesDao()
 
-
-
         binding=FragmentHomeBinding.inflate(layoutInflater,container,false)
+        recyclerview=binding.recyclerviewid
+
         binding.addnotesbtn.setOnClickListener{
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_new_Notes)
         }
 
-        //setUpRecyclerView()
+        setUpRecyclerView()
 
 
         return binding.root
-
-
-
-
     }
-/*
+
     private fun setUpRecyclerView() {
         val noteCollection = notesDao.Notecollection
         val currentuser = auth.currentUser
-        val cuid = currentuser?.uid
+        val cuid = currentuser?.uid.toString()
         val query = noteCollection.whereEqualTo("uid",cuid)
 
         val recyclerViewOption = FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note::class.java).build()
+        val layoutManager = LinearLayoutManager(context)
         adapter= MyAdapter(recyclerViewOption)
+        recyclerview.layoutManager= layoutManager
         recyclerview.adapter = adapter
 
     }
@@ -68,5 +69,5 @@ class HomeFragment : Fragment() {
         adapter.stopListening()
     }
 
-*/
+
 }
