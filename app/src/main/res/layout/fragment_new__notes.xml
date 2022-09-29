@@ -27,11 +27,11 @@
         <EditText
             android:id="@+id/Notes_Edit_Text_Box"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:background="@drawable/edit_txt_shape"
             android:hint="Notes"
             android:textColor="#DCDCDC"
-            android:padding="150dp"
+            android:padding="15dp"
             android:gravity="start"
             android:layout_marginTop="10dp"
             tools:ignore="DuplicateIds" />

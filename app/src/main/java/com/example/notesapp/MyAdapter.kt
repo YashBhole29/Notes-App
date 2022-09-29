@@ -11,9 +11,15 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 class MyAdapter(options: FirestoreRecyclerOptions<Note>) :FirestoreRecyclerAdapter<Note,MyAdapter.RVViewHolder>(
     options
 ){
+    fun deleteNote(position:Int){
+        snapshots.getSnapshot(position).reference.delete()
+    }
+
+
+
     class RVViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val noteText : TextView = itemView.findViewById(R.id.notecontent)
-
+        val noteTitle: TextView=itemView.findViewById(R.id.notetitle)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RVViewHolder {
@@ -22,5 +28,6 @@ class MyAdapter(options: FirestoreRecyclerOptions<Note>) :FirestoreRecyclerAdapt
 
     override fun onBindViewHolder(holder: RVViewHolder, position: Int, model: Note) {
         holder.noteText.text=model.text
+        holder.noteTitle.text=model.title
     }
 }
