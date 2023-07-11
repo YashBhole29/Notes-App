@@ -3,7 +3,7 @@
 
 ### This is Note Taking App using
 
--Google Aunthication
+-Google Authientication
 
 -Google Firestore to save and retrieve data
 
